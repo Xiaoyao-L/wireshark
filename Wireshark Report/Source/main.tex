@@ -1,0 +1,49 @@
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, margin=0.79in]{geometry}
+\usepackage{lastpage}
+\usepackage[compact]{titlesec}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{listings}
+\usetikzlibrary{fit}
+\usepackage{booktabs}
+\usepackage{subfigure} 
+
+
+\titleformat{\section}[hang]{\bfseries\large}{\thesection}{0.5em}{}
+\titleformat{\subsection}[hang]{\bfseries\normalsize}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}[runin]{\bfseries\normalsize}{\thesubsubsection}{0.5em}{}
+
+
+
+\title{\large{\textbf{Wireless IoT and LAN: Wireshark Report}}}
+\author{
+    \small Xiaoyao Luo (5054702, xiaoyaoluo) \and
+    \small Yifan Li (5145147, yli32)
+}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+Report contains \pageref{LastPage} of maximum 4 pages.
+\end{center}
+
+\input{Introduction}
+\newline
+\input{Method}
+\newpage
+\input{Test setup}
+
+
+\input{Results and evaluation}
+\newline
+
+\input{Conclusion}
+\newline
+
+\end{document}

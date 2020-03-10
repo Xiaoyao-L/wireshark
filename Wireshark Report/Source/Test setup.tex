@@ -1,0 +1,24 @@
+\section{Test setup}
+The project sniffs out all 802.11 frames by setting the built-in network card directly to Monitor mode. Here we use the python3.8 to analyze the collected data. And the Wireshark is running on Linux system (Ubuntu18.04), the python scripts is running on Windows system.
+\newline
+Considering that we need to collect the vendor information of the access points and stations, first of all, we choose to extract source addresses from beacon frames and request frames. Then we noticed that amount of probe request frame is too much less than that of beacon frame, which means there are only little stations. So we try to extract the destination addresses from the probe responses, which also carry the information about vendor types, the result shows we sniff more stations. Then here comes a question, based on the theory of connection process, the two methods we aforementioned should lead to the same result of stations, but actually, it shows great difference. To figure out this question, we try to track one specific mobile station, then it shows that after the station and access point finish the authentication and association process, the station does not send probe request any more, while the access point still sends the beacon frame. But it only explain why probe requests are much less than beacon frame, the question proposed before is still not clear.
+\newline
+In order to avoid the error caused by aforementioned question, we finally choose extract vendor type information of the station from both probe request frame and  probe response frame, which means we choose the display filter "wlan.fc.type\_subtype eq 4" and "wlan.fc.type\_subtype eq 5". As for the information of access points ,we just choose to use "wlan.fc.type\_subtype eq 8" as our filter to get the beacon frames then get the information of the vendors.
+\newline
+The project uses Wireshark to capture packets of WLAN data and use python program to extract the information about vendors in the packet and summarize it into bar charts. Through the investigation of different vendors' company information, the project also use excel to draw a pie chart of the information about the vendor company's nationality.
+\newpage
+In the project, members captured three set of data around two dormitories and the campus teaching building which were analyzed respectively. All the "sniffing" data were obtained by walking in the area and shown in Table 1.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc}
+\toprule  
+Region & Time(Minute) & Total data(Frame)\\
+\midrule  
+Dormitory No.1 & 88 & 120794\\
+Dormitory No.2 & 70 & 146211\\
+Campus & 31 & 128977\\
+\bottomrule 
+\end{tabular}
+\caption{Data information}\label{tab:aStrangeTable} 
+\end{table}
